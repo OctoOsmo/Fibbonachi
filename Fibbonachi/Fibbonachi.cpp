@@ -3,34 +3,33 @@
 
 #include "stdafx.h"
 
-int result;
-int first = 0, second =1;
-int n;
 
-inline void fibb(int &a, int &b, int &n)
+
+int Fib(int n)
 {
-	if(n != 0)
+	if(n == 0) return 0;
+	if(n == 1) return 1;
+	int a0, a1, a2, nin;
+	a0 = 0;
+	a1 = 1;
+	nin = n;
+	while(nin > 1)
 	{
-		a = b;
-		b = a+b;
-		--n;
-		fibb(a, b, n);
-	}else
-	{
-		//fibb(a, b, n);
-		//--n;
-		result = a + b;
+		a2 = a0 + a1;
+		a0 = a1;
+		a1 = a2;
+		--nin;
+		//printf("\n%d = %d\n", n - nin + 1, a1);
 	}
+	return a1;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	printf("Fbbonachi\n");
-	n = 15;
-	printf("%d member of sequence= ", n + 1);
-	fibb(first, second, n);
-	printf("%d\n", result);
+	int n = 40;
+	printf("\n%d-th member of Fibbonachi sequence is: ", n);
+	//Fib();
+	printf("%d\n", Fib(n));
 	getchar();
-	return 0;
 }
 
